@@ -10,4 +10,9 @@ export default defineNuxtConfig({
       exclude: []
     }
     },
+    app: {
+      head: {
+        title: 'Blogger'
+      }
+    }
 })

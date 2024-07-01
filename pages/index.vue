@@ -4,6 +4,18 @@ console.log('Current user:', user.value);
 const { data: posts } = await useFetch('https://dummyjson.com/posts')
 const postsList = ref(posts.value.posts);
 //console.log(toRaw(posts.value));
+
+const route = useRoute()
+const showNotification = ref(false)
+
+onMounted(() => {
+  if (route.query.notification) {
+    showNotification.value = true
+    setTimeout(() => {
+      showNotification.value = false
+    }, 3000) // Obavijest nestaje nakon 3 sekunde
+  }
+})
 </script>
 
 <template>
@@ -37,4 +49,7 @@ const postsList = ref(posts.value.posts);
       <!--<div v-for="(item, index) in 3" :key="index" class="w-[600px] h-[400px] bg-neutral-200"></div> -->
     </div>
   </main>
+  <div v-if="showNotification" class="fixed bottom-4 right-4 bg-green-500 text-white py-2 px-4 rounded shadow-lg">
+      Email successfully sent!
+  </div>
 </template>

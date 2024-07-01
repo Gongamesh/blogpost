@@ -14,6 +14,7 @@ const props = defineProps({
   description: String,
   content: String,
   buttonText: String,
+  contact: String,
 })
 </script>
 
@@ -27,7 +28,9 @@ const props = defineProps({
         {{ props.content }}
     </CardContent>
     <CardFooter class="flex w-full gap-4 justify-center">
+      <NuxtLink :to="{ name: 'form-name', params: {name: props.contact  }}">
         <Button variant="secondary">{{ props.buttonText }}</Button>
+      </NuxtLink>
     </CardFooter>
   </Card>
 </template>
