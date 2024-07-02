@@ -17,7 +17,7 @@ const { data: tagsData } = await useFetch('https://dummyjson.com/posts/tag-list'
 const tags = ref<string[]>([]);
 
 if (tagsData.value) {
-  tags.value = tagsData.value.slice(0, 10);
+  tags.value = tagsData.value.slice(0, 5);
 }
 
 console.log('Selected: ',selectedTag);
